@@ -1,0 +1,22 @@
+# SpaceHouse Backend - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# FastAPI - Modern async web framework
+fastapi==0.124.4
+
+# Uvicorn - ASGI server for FastAPI
+uvicorn[standard]==0.38.0
+
+# Pydantic - Data validation using Python type annotations
+pydantic==2.12.5
+
+# Optional: Production dependencies
+# Uncomment for production deployment
+
+# gunicorn==21.2.0          # Production WSGI server (alternative to uvicorn)
+# python-multipart==0.0.6   # For file upload support
+# python-jose[cryptography]==3.3.0  # For JWT tokens (if adding auth)
+# passlib[bcrypt]==1.7.4    # For password hashing (if adding auth)
+# redis==5.0.1              # For caching (if needed)
+# psycopg2-binary==2.9.9    # PostgreSQL driver (if using database)
+# sqlalchemy==2.0.23        # ORM (if using database)

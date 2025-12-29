@@ -29,7 +29,9 @@
       "Bash(heroku apps:*)",
       "Bash(heroku create:*)",
       "Bash(heroku buildpacks:clear:*)",
-      "Bash(heroku buildpacks:add:*)"
+      "Bash(heroku buildpacks:add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nAdd full-stack Heroku deployment with React frontend\n\n- Configure backend to serve built React frontend static files\n- Update API client to use relative URLs for production\n- Add root package.json with postinstall build script\n- Configure Node.js + Python buildpacks for Heroku\n- Add Vite environment type definitions\n\n🤖 Generated with Claude Code \\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)"
     ]
   }
 }

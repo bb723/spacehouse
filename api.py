@@ -470,7 +470,7 @@ app.add_middleware(
 # API ENDPOINTS
 # ============================================================================
 
-@app.get("/")
+@app.get("/api")
 def read_root():
     """Health check endpoint"""
     return {
@@ -481,7 +481,8 @@ def read_root():
     }
 
 
-@app.post("/calculate", response_model=CalculationResponse)
+@app.post("/api/calculate", response_model=CalculationResponse)
+@app.post("/calculate", response_model=CalculationResponse, include_in_schema=False)
 def calculate_project(project: Project):
     """
     Main calculation endpoint.
@@ -544,7 +545,8 @@ def calculate_project(project: Project):
         raise HTTPException(status_code=500, detail=f"Calculation error: {str(e)}")
 
 
-@app.post("/validate", response_model=List[ComplianceResult])
+@app.post("/api/validate", response_model=List[ComplianceResult])
+@app.post("/validate", response_model=List[ComplianceResult], include_in_schema=False)
 def validate_only(project: Project):
     """
     Code validation endpoint (no BOM calculation).
@@ -565,7 +567,8 @@ def validate_only(project: Project):
         raise HTTPException(status_code=500, detail=f"Validation error: {str(e)}")
 
 
-@app.post("/bom", response_model=BillOfMaterials)
+@app.post("/api/bom", response_model=BillOfMaterials)
+@app.post("/bom", response_model=BillOfMaterials, include_in_schema=False)
 def calculate_bom_only(project: Project):
     """
     Bill of Materials endpoint (no validation).

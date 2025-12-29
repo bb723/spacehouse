@@ -20,7 +20,16 @@
       "Bash(npm run dev:*)",
       "Bash(curl:*)",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nInitial commit - SpaceHouse Configurator with Wall Elevation Viewer\n\nFeatures:\n- TerraBuild application with React + Konva\n- Interactive floor plan canvas editor with wall selection\n- Wall elevation viewer with framing details\n- Smart stud calculation (16oc/24oc spacing)\n- Professional architectural title block\n- Real-time code validation (IRC/IECC)\n- Bill of materials calculation\n- FastAPI backend with Python 3.12\n- Full TypeScript support\n- Responsive UI with Tailwind CSS\n\nComponents:\n- ElevationViewer: Head-on wall view with framing diagram\n- FramingRenderer: Konva canvas with plates and studs\n- TitleBlock: Architectural specifications and details\n- Dimension lines with proper formatting\n\n🤖 Generated with Claude Code (https://claude.com/claude-code)\n\nCo-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git config:*)",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git push:*)",
+      "Bash(heroku apps:*)",
+      "Bash(heroku create:*)",
+      "Bash(heroku buildpacks:clear:*)",
+      "Bash(heroku buildpacks:add:*)"
     ]
   }
 }

@@ -5,10 +5,14 @@ Exposes the construction logic engine as a FastAPI service for frontend consumpt
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field, validator
 from typing import List, Dict, Optional, Any
 from enum import Enum
 import uvicorn
+import os
+from pathlib import Path
 
 
 # ============================================================================
@@ -592,6 +596,30 @@ def calculate_bom_only(project: Project):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"BOM calculation error: {str(e)}")
+
+
+# ============================================================================
+# STATIC FILE SERVING - Serve React Frontend in Production
+# ============================================================================
+
+# Path to the built frontend files
+FRONTEND_BUILD_DIR = Path(__file__).parent / "frontend" / "dist"
+
+# Serve static files if the build directory exists (production mode)
+if FRONTEND_BUILD_DIR.exists():
+    # Mount static assets (JS, CSS, images)
+    app.mount("/assets", StaticFiles(directory=FRONTEND_BUILD_DIR / "assets"), name="assets")
+
+    # Serve index.html for the root and all non-API routes (SPA routing)
+    @app.get("/{full_path:path}")
+    async def serve_spa(full_path: str):
+        """Serve the React SPA for all non-API routes"""
+        # If requesting a file that exists, serve it
+        file_path = FRONTEND_BUILD_DIR / full_path
+        if file_path.exists() and file_path.is_file():
+            return FileResponse(file_path)
+        # Otherwise serve index.html (SPA routing)
+        return FileResponse(FRONTEND_BUILD_DIR / "index.html")
 
 
 # ============================================================================

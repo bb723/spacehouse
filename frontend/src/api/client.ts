@@ -10,8 +10,11 @@ import type { Project, CalculationResponse, ComplianceResult, BillOfMaterials } 
 // AXIOS INSTANCE CONFIGURATION
 // ============================================================================
 
+// Use environment variable for API URL, fallback to relative path for production
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
+
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8000',
+  baseURL: API_BASE_URL,
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

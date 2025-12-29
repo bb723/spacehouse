@@ -1,0 +1,19 @@
+#!/bin/bash
+# This script runs after Heroku installs Python dependencies
+# It builds the React frontend
+
+echo "======================================"
+echo "Building React Frontend..."
+echo "======================================"
+
+cd frontend
+
+# Install Node.js dependencies
+npm install
+
+# Build the production bundle
+npm run build
+
+echo "======================================"
+echo "Frontend build complete!"
+echo "======================================"

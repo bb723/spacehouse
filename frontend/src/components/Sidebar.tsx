@@ -5,7 +5,7 @@
 
 import { AlertCircle, CheckCircle2, Package, Settings, Home } from 'lucide-react';
 import { useProjectStore } from '../store/projectStore';
-import { RoomType, ClimateZone, FramingType } from '../types';
+import { RoomType, ClimateZone } from '../types';
 
 export default function Sidebar() {
   const {

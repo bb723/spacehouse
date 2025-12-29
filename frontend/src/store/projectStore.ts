@@ -14,7 +14,6 @@ import {
 } from '../types';
 import type {
   Project,
-  Room,
   Wall,
   Window,
   MaterialLayer,
